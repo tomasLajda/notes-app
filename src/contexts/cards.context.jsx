@@ -27,8 +27,6 @@ const cardReducer = (state, action) => {
 
   switch (type) {
     case CARD_ACTION_TYPE.SET_CARDS:
-      console.log({ ...state });
-      console.log({ ...payload });
       return {
         ...state,
         ...payload,
