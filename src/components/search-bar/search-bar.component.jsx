@@ -25,7 +25,11 @@ const SearchBar = () => {
   }, [value, cards]);
 
   return (
-    <form action="get" className="flex my-4 sm:mx-auto">
+    <form
+      onSubmit={(event) => event.preventDefault()}
+      action="get"
+      className="flex my-4 sm:mx-auto"
+    >
       <div className="flex w-full p-1 rounded-xl bg-gray-200 outline-none">
         <svg
           onClick={iconClickHandler}
