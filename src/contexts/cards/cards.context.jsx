@@ -1,4 +1,4 @@
-import { createContext, useReducer } from 'react';
+import { createContext, useEffect, useReducer } from 'react';
 
 const addCard = (cardToAdd, cards) => {
   return [...cards, cardToAdd];
@@ -10,6 +10,10 @@ const removeCard = (cardToRemove, cards) => {
 
 const filterCards = (searchFilter, cards) => {
   return cards.filter((card) => card.toLowerCase().includes(searchFilter));
+};
+
+const setLocalStorage = (cards) => {
+  localStorage.setItem('cards', cards.join('|'));
 };
 
 export const CardContext = createContext({
@@ -70,11 +74,13 @@ export const CardProvider = ({ children }) => {
 
   const addCardToSite = (cardToAdd) => {
     const newCards = addCard(cardToAdd, cards);
+    setLocalStorage(newCards);
     updateCardsReducer(newCards);
   };
 
   const removeCardFromSite = (cardToAdd) => {
     const newCards = removeCard(cardToAdd, cards);
+    setLocalStorage(newCards);
     updateCardsReducer(newCards);
   };
 
@@ -82,6 +88,12 @@ export const CardProvider = ({ children }) => {
     const newFilteredCards = filterCards(searchFilter, cards);
     filteredCardsReducer(newFilteredCards);
   };
+
+  useEffect(() => {
+    const storedCards = localStorage.getItem('cards');
+    const newCards = storedCards ? storedCards.split('|') : [];
+    updateCardsReducer(newCards);
+  }, []);
 
   const value = {
     cards,
