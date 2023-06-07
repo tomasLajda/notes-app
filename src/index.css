@@ -4,6 +4,13 @@
 
 @layer components {
   .card {
-    @apply flex flex-col justify-between w-72 h-52 p-3 bg-sky-500 rounded-md;
+    @apply flex flex-col justify-between h-60 p-3  bg-sky-500 rounded-xl;
   }
+}
+
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+  display: none;
 }

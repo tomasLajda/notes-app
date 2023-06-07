@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 
-import { CardContext } from '../../contexts/cards.context';
+import { CardContext } from '../../contexts/cards/cards.context';
 
 const CreateCard = () => {
   const maxLength = 200;
@@ -33,7 +33,7 @@ const CreateCard = () => {
         onChange={inputChangeHandler}
         value={value}
         placeholder="Type to add a note..."
-        className="w-full flex-grow text-black bg-inherit placeholder:text-black placeholder:opacity-40 outline-none resize-none"
+        className="w-full flex-grow text-black bg-inherit placeholder:text-black placeholder:opacity-30 outline-none resize-none"
       />
       <div className="flex justify-between">
         <label htmlFor="">{`${lettersRemaining} remaining`}</label>

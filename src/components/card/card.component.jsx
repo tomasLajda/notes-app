@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { CardContext } from '../../contexts/cards.context';
+import { CardContext } from '../../contexts/cards/cards.context';
 
 const Card = ({ card }) => {
   const { removeCardFromSite } = useContext(CardContext);
